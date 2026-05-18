@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Casting Auswahl — RE/MAX × Wexplore</title>
+<meta name="description" content="Casting-Auswahl für das RE/MAX Projekt. Vorschläge der Agentur people2people, kuratiert von Wexplore Productions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="./" aria-label="Wexplore Productions">
+      <img src="wexplore-logo.png" alt="Wexplore" class="brand-logo" />
+    </a>
+    <nav class="header-meta">
+      <span class="meta-label">Projekt</span>
+      <span class="meta-value">RE/MAX Casting</span>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Casting Auswahl · Drehprojekt RE/MAX</p>
+    <h1 class="hero-title">
+      <span class="line">Kandidat:innen</span>
+      <span class="line accent">für eure Auswahl.</span>
+    </h1>
+    <p class="hero-lede">
+      Vorschläge von <strong>people2people</strong>, kuratiert von Wexplore Productions.
+      Bitte pro Person <strong>Ja</strong>, <strong>Vielleicht</strong> oder <strong>Nein</strong> wählen.
+      Die Auswahl bleibt im Browser gespeichert.
+      Am Ende der Seite könnt ihr das Ergebnis kopieren und uns zurückschicken.
+    </p>
+    <p class="hero-note">
+      Standardmäßig werden nur <strong>bestätigt verfügbare</strong> Models angezeigt.
+      Über die Filter unten könnt ihr auf <strong>Alle</strong> wechseln, um auch noch offene Anfragen zu sehen.
+    </p>
+    <div class="hero-counts" id="counts">
+      <div class="count-pill"><span class="count-num" data-count="total">0</span><span class="count-label">Total</span></div>
+      <div class="count-pill is-yes"><span class="count-num" data-count="yes">0</span><span class="count-label">Ja</span></div>
+      <div class="count-pill is-maybe"><span class="count-num" data-count="maybe">0</span><span class="count-label">Vielleicht</span></div>
+      <div class="count-pill is-no"><span class="count-num" data-count="no">0</span><span class="count-label">Nein</span></div>
+      <div class="count-pill is-open"><span class="count-num" data-count="open">0</span><span class="count-label">Offen</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTROLS ============ -->
+<section class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <input type="search" id="search" placeholder="Name, Ort, Verfügbarkeit suchen …" autocomplete="off" />
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter is-active" data-filter="available">Verfügbar</button>
+      <button class="filter" data-filter="all">Alle</button>
+      <button class="filter" data-filter="open">Offen</button>
+      <button class="filter" data-filter="yes">Ja</button>
+      <button class="filter" data-filter="maybe">Vielleicht</button>
+      <button class="filter" data-filter="no">Nein</button>
+    </div>
+    <div class="category-filters" id="categoryFilters">
+      <!-- gets populated -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ GRID ============ -->
+<main class="grid-wrap">
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState" hidden>
+    <p>Keine Kandidat:innen für diese Auswahl.</p>
+  </div>
+</main>
+
+<!-- ============ FLOATING ACTION ============ -->
+<div class="floating-actions">
+  <button id="copyResults" class="floating-btn">
+    <span class="floating-btn-label">Ergebnisse kopieren</span>
+    <span class="floating-btn-icon">→</span>
+  </button>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <button class="modal-close" data-close aria-label="Schließen">×</button>
+    <div class="modal-inner" id="modalInner"></div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>Wexplore Productions GmbH · Klammstraße 3/Top 1, 4020 Linz</span>
+    <span class="footer-meta">Casting-Auswahl-Tool · Daten lokal im Browser</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
