@@ -159,11 +159,28 @@
     const $input = document.getElementById('gateInput');
     const $error = document.getElementById('gateError');
 
+    function unlockGate() {
+      $gate.classList.add('gate-hidden');
+      $gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gate-locked');
+      document.body.classList.add('gate-passed');
+      // Nach der Animation komplett aus dem DOM-Flow nehmen
+      setTimeout(function() {
+        if ($gate && $gate.parentNode) {
+          $gate.parentNode.removeChild($gate);
+        }
+      }, 300);
+    }
+
     // already unlocked in this session? hide gate immediately
     if (sessionStorage.getItem(STORAGE_KEY) === '1') {
-      $gate.hidden = true;
+      $gate.classList.add('gate-hidden');
       $gate.setAttribute('aria-hidden', 'true');
       document.body.classList.add('gate-passed');
+      // Sofort aus DOM nehmen, keine Animation
+      if ($gate && $gate.parentNode) {
+        $gate.parentNode.removeChild($gate);
+      }
       return;
     }
 
@@ -174,13 +191,7 @@
       const value = ($input.value || '').trim().toLowerCase();
       if (value === PASSWORD) {
         sessionStorage.setItem(STORAGE_KEY, '1');
-        $gate.classList.add('gate-fading');
-        setTimeout(function() {
-          $gate.hidden = true;
-          $gate.setAttribute('aria-hidden', 'true');
-          document.body.classList.remove('gate-locked');
-          document.body.classList.add('gate-passed');
-        }, 250);
+        unlockGate();
       } else {
         $error.hidden = false;
         $input.value = '';

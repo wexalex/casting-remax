@@ -802,8 +802,10 @@ body.gate-locked .site-footer {
   opacity: 1;
   transition: opacity 0.25s var(--ease);
 }
-.gate.gate-fading {
+.gate.gate-hidden {
   opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 .gate-inner {
   max-width: 460px;
