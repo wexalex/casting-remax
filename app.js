@@ -319,17 +319,22 @@ function buildResultText() {
   lines.push('Stand: ' + new Date().toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' }));
   lines.push('');
 
-  const groups = { yes: [], maybe: [], no: [], open: [] };
+  const groups = { yes: [], maybe: [] };
   state.models.forEach(m => {
-    const v = state.votes[m.id] || 'open';
-    groups[v].push(m);
+    const v = state.votes[m.id];
+    if (v === 'yes') groups.yes.push(m);
+    else if (v === 'maybe') groups.maybe.push(m);
   });
+
+  // Falls nichts ausgewählt: kurzer Hinweis
+  if (groups.yes.length === 0 && groups.maybe.length === 0) {
+    lines.push('(Noch keine Kandidat:innen mit Ja oder Vielleicht markiert.)');
+    return lines;
+  }
 
   const sections = [
     { key: 'yes', label: '✓ JA' },
     { key: 'maybe', label: '? VIELLEICHT' },
-    { key: 'open', label: '— OFFEN' },
-    { key: 'no', label: '✗ NEIN' },
   ];
 
   sections.forEach(s => {
