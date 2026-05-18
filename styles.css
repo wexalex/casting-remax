@@ -82,14 +82,34 @@ img { display: block; max-width: 100%; }
   justify-content: space-between;
   gap: 24px;
 }
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 .brand {
   display: flex; align-items: center;
   text-decoration: none;
 }
+.brand-partner {
+  display: flex; align-items: center;
+}
 .brand-logo {
-  height: 36px;
   width: auto;
   display: block;
+}
+/* Each logo balanced to similar visual weight (cap-height), not pixel-height */
+.brand-logo-wexplore  { height: 40px; }
+.brand-logo-papabogner { height: 18px; }
+.brand-logo-remax     { height: 22px; }
+
+.brand-x {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--whisper);
+  line-height: 1;
+  user-select: none;
 }
 .header-meta {
   display: flex; align-items: baseline; gap: 12px;
@@ -726,10 +746,18 @@ img { display: block; max-width: 100%; }
   .floating-actions { bottom: 18px; right: 18px; }
   .modal-body { padding: 24px 22px 28px; }
   .modal-name { font-size: 26px; }
-  .brand-logo { height: 28px; }
+  .brand-row { gap: 10px; }
+  .brand-logo-wexplore  { height: 30px; }
+  .brand-logo-papabogner { height: 14px; }
+  .brand-logo-remax     { height: 17px; }
+  .brand-x { font-size: 12px; }
 }
 @media (max-width: 560px) {
   .header-meta { display: none; }
+  .brand-row { gap: 8px; }
+  .brand-logo-wexplore  { height: 26px; }
+  .brand-logo-papabogner { height: 12px; }
+  .brand-logo-remax     { height: 14px; }
   .grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .card-body { padding: 14px 14px 12px; }
   .card-name { font-size: 18px; }
