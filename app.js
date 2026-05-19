@@ -370,7 +370,7 @@ $sendForm.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
-        subject: `Casting-Auswahl RE/MAX × Wexplore — von ${name}`,
+        subject: `Casting-Auswahl RE/MAX FSBO — von ${name}`,
         from_name: name,
         message: text,
         botcheck: ''
@@ -444,7 +444,7 @@ function markFloatingSent() {
 
 function buildResultText(senderName, senderComment) {
   const lines = [];
-  lines.push('CASTING AUSWAHL — RE/MAX × WEXPLORE');
+  lines.push('CASTING AUSWAHL — RE/MAX FSBO');
   lines.push('Stand: ' + new Date().toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' }));
   if (senderName) lines.push('Gesendet von: ' + senderName);
   lines.push('');

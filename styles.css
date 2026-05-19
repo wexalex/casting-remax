@@ -183,6 +183,29 @@ img { display: block; max-width: 100%; }
 }
 .hero-note strong { color: var(--ink); font-weight: 500; }
 
+.how-it-works {
+  max-width: 620px;
+  margin: 0 0 28px;
+  padding: 18px 0 20px;
+  border-top: 1px solid rgba(13,13,13,0.1);
+  border-bottom: 1px solid rgba(13,13,13,0.1);
+}
+.how-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--gold-deep);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.how-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--graphite);
+  margin: 0;
+}
+.how-text strong { color: var(--ink); font-weight: 500; }
+
 .hero-counts {
   display: flex; flex-wrap: wrap; gap: 12px;
 }
