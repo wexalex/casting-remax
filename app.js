@@ -148,11 +148,11 @@ function renderCard(m) {
         <div class="card-info">
           <div class="info-row">
             <span class="info-label">Verf.</span>
-            <span class="info-value ${availClass}">${escapeHtml(m.availability || '—')}</span>
+            <span class="info-value ${availClass}">${escapeHtml(m.availability || '-')}</span>
           </div>
           <div class="info-row">
             <span class="info-label">Anreise</span>
-            <span class="info-value ${travelClass}">${escapeHtml(m.travel || '—')}</span>
+            <span class="info-value ${travelClass}">${escapeHtml(m.travel || '-')}</span>
           </div>
         </div>
 
@@ -257,11 +257,11 @@ function openModal(id) {
 
       <div class="modal-detail">
         <div class="modal-detail-label">Verfügbarkeit</div>
-        <div class="modal-detail-value ${availClass}">${escapeHtml(m.availability || '—')}</div>
+        <div class="modal-detail-value ${availClass}">${escapeHtml(m.availability || '-')}</div>
       </div>
       <div class="modal-detail">
         <div class="modal-detail-label">Anreise</div>
-        <div class="modal-detail-value ${travelClass}">${escapeHtml(m.travel || '—')}</div>
+        <div class="modal-detail-value ${travelClass}">${escapeHtml(m.travel || '-')}</div>
       </div>
 
       ${m.notes ? `<div class="modal-notes">${escapeHtml(m.notes)}</div>` : ''}
@@ -321,7 +321,7 @@ $copyBtn.addEventListener('click', () => {
   const parts = [];
   if (yesCount > 0) parts.push(`${yesCount}× Ja`);
   if (maybeCount > 0) parts.push(`${maybeCount}× Vielleicht`);
-  $sendSummary.textContent = `${parts.join(' und ')} — wird an Wexplore Productions gesendet.`;
+  $sendSummary.textContent = `${parts.join(' und ')} - wird an Wexplore Productions gesendet.`;
 
   openSendModal();
 });
@@ -370,7 +370,7 @@ $sendForm.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
-        subject: `Casting-Auswahl RE/MAX FSBO — von ${name}`,
+        subject: `Casting-Auswahl RE/MAX FSBO - von ${name}`,
         from_name: name,
         message: text,
         botcheck: ''
@@ -395,7 +395,7 @@ $sendForm.addEventListener('submit', async (e) => {
     setSendBtnState('idle');
     try {
       await navigator.clipboard.writeText(text);
-      showToast('Senden fehlgeschlagen — in Zwischenablage kopiert');
+      showToast('Senden fehlgeschlagen - in Zwischenablage kopiert');
     } catch (e) {
       const w = window.open('', '_blank');
       if (w) {
@@ -444,7 +444,7 @@ function markFloatingSent() {
 
 function buildResultText(senderName, senderComment) {
   const lines = [];
-  lines.push('CASTING AUSWAHL — RE/MAX FSBO');
+  lines.push('CASTING AUSWAHL - RE/MAX FSBO');
   lines.push('Stand: ' + new Date().toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' }));
   if (senderName) lines.push('Gesendet von: ' + senderName);
   lines.push('');
