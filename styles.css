@@ -507,6 +507,26 @@ img { display: block; max-width: 100%; }
   transform: translateY(-2px);
   box-shadow: 0 16px 40px -8px rgba(184,152,90,0.5);
 }
+.floating-btn:disabled {
+  cursor: default;
+  transform: none;
+  box-shadow: 0 12px 32px -8px rgba(13,13,13,0.4);
+}
+.floating-btn.is-sending {
+  background: var(--graphite);
+  opacity: 0.85;
+}
+.floating-btn.is-sending:hover {
+  transform: none;
+  background: var(--graphite);
+}
+.floating-btn.is-sent {
+  background: var(--yes);
+}
+.floating-btn.is-sent:hover {
+  background: var(--yes);
+  transform: none;
+}
 .floating-btn-icon {
   font-family: var(--sans);
   font-size: 16px;

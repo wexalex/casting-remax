@@ -298,20 +298,86 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && $modal.getAttribute('aria-hidden') === 'false') closeModal();
 });
 
-/* ---------- COPY RESULTS ---------- */
-$copyBtn.addEventListener('click', () => {
+/* ---------- SEND RESULTS ---------- */
+const WEB3FORMS_KEY = '1dce030d-d365-4be5-a295-c82daee54fb4';
+
+$copyBtn.addEventListener('click', async () => {
   const lines = buildResultText();
   const text = lines.join('\n');
-  navigator.clipboard.writeText(text).then(() => {
-    showToast('Ergebnisse in Zwischenablage');
-  }).catch(() => {
-    // fallback: open in new window
-    const w = window.open('', '_blank');
-    if (w) {
-      w.document.body.innerHTML = `<pre style="font-family:sans-serif;padding:20px;white-space:pre-wrap;">${escapeHtml(text)}</pre>`;
-    }
+
+  // Falls niemand markiert: gar nicht erst senden
+  const hasSelection = state.models.some(m => {
+    const v = state.votes[m.id];
+    return v === 'yes' || v === 'maybe';
   });
+  if (!hasSelection) {
+    showToast('Keine Auswahl getroffen');
+    return;
+  }
+
+  // Button-State: sending
+  const originalLabel = $copyBtn.querySelector('.floating-btn-label').textContent;
+  setBtnState('sending');
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: 'Casting-Auswahl RE/MAX × Wexplore',
+        from_name: 'Casting-Tool',
+        message: text,
+        // honeypot leer lassen
+        botcheck: ''
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      setBtnState('sent');
+      showToast('Auswahl an Wexplore gesendet ✓');
+      // Nach 3s zurück zum Normalzustand
+      setTimeout(() => setBtnState('idle', originalLabel), 3000);
+    } else {
+      throw new Error(data.message || 'Sendung fehlgeschlagen');
+    }
+  } catch (err) {
+    console.warn('Send failed, falling back to copy', err);
+    setBtnState('idle', originalLabel);
+    // Fallback: in Zwischenablage kopieren
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Senden fehlgeschlagen — in Zwischenablage kopiert');
+    } catch (e) {
+      const w = window.open('', '_blank');
+      if (w) {
+        w.document.body.innerHTML = `<pre style="font-family:sans-serif;padding:20px;white-space:pre-wrap;">${escapeHtml(text)}</pre>`;
+      }
+      showToast('Bitte Text manuell kopieren');
+    }
+  }
 });
+
+function setBtnState(mode, originalLabel) {
+  const $label = $copyBtn.querySelector('.floating-btn-label');
+  const $icon  = $copyBtn.querySelector('.floating-btn-icon');
+  $copyBtn.classList.remove('is-sending', 'is-sent');
+  if (mode === 'sending') {
+    $copyBtn.classList.add('is-sending');
+    $copyBtn.disabled = true;
+    $label.textContent = 'Wird gesendet …';
+    $icon.textContent = '';
+  } else if (mode === 'sent') {
+    $copyBtn.classList.add('is-sent');
+    $copyBtn.disabled = true;
+    $label.textContent = 'Gesendet';
+    $icon.textContent = '✓';
+  } else {
+    $copyBtn.disabled = false;
+    $label.textContent = originalLabel || 'Auswahl an Wexplore senden';
+    $icon.textContent = '→';
+  }
+}
 
 function buildResultText() {
   const lines = [];
