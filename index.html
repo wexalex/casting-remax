@@ -135,6 +135,47 @@
   </div>
 </div>
 
+<!-- ============ SEND MODAL ============ -->
+<div class="modal send-modal" id="sendModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-send></div>
+  <div class="modal-panel send-modal-panel" role="dialog" aria-modal="true" aria-labelledby="sendModalTitle">
+    <button class="modal-close" data-close-send aria-label="Schließen">×</button>
+    <div class="send-modal-body">
+      <p class="modal-cat">Auswahl senden</p>
+      <h2 class="modal-name" id="sendModalTitle">Bereit für Wexplore?</h2>
+      <p class="send-modal-lede" id="sendSummary">Eure Auswahl wird per Mail an die Filmproduktion gesendet.</p>
+
+      <form class="send-form" id="sendForm" autocomplete="off">
+        <label class="send-label" for="sendName">Dein Name <span class="send-required">*</span></label>
+        <input
+          type="text"
+          id="sendName"
+          class="send-input"
+          placeholder="z.B. Felix"
+          required
+          autocomplete="name"
+        />
+
+        <label class="send-label" for="sendComment">Kommentar <span class="send-optional">(optional)</span></label>
+        <textarea
+          id="sendComment"
+          class="send-input send-textarea"
+          placeholder="z.B. Olivia wäre unsere klare Erstwahl, falls verfügbar."
+          rows="4"
+        ></textarea>
+
+        <div class="send-actions">
+          <button type="button" class="send-btn-secondary" data-close-send>Abbrechen</button>
+          <button type="submit" class="send-btn-primary" id="sendSubmit">
+            <span class="send-btn-label">Absenden</span>
+            <span class="send-btn-icon">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- ============ TOAST ============ -->
 <div class="toast" id="toast" aria-live="polite"></div>
 

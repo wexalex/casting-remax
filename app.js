@@ -301,23 +301,68 @@ document.addEventListener('keydown', (e) => {
 /* ---------- SEND RESULTS ---------- */
 const WEB3FORMS_KEY = '1dce030d-d365-4be5-a295-c82daee54fb4';
 
-$copyBtn.addEventListener('click', async () => {
-  const lines = buildResultText();
-  const text = lines.join('\n');
+const $sendModal = document.getElementById('sendModal');
+const $sendForm = document.getElementById('sendForm');
+const $sendName = document.getElementById('sendName');
+const $sendComment = document.getElementById('sendComment');
+const $sendSubmit = document.getElementById('sendSubmit');
+const $sendSummary = document.getElementById('sendSummary');
 
-  // Falls niemand markiert: gar nicht erst senden
-  const hasSelection = state.models.some(m => {
-    const v = state.votes[m.id];
-    return v === 'yes' || v === 'maybe';
-  });
-  if (!hasSelection) {
+$copyBtn.addEventListener('click', () => {
+  // Falls niemand markiert: gar nicht erst Modal öffnen
+  const yesCount = state.models.filter(m => state.votes[m.id] === 'yes').length;
+  const maybeCount = state.models.filter(m => state.votes[m.id] === 'maybe').length;
+  if (yesCount + maybeCount === 0) {
     showToast('Keine Auswahl getroffen');
     return;
   }
 
-  // Button-State: sending
-  const originalLabel = $copyBtn.querySelector('.floating-btn-label').textContent;
-  setBtnState('sending');
+  // Summary text im Modal aktualisieren
+  const parts = [];
+  if (yesCount > 0) parts.push(`${yesCount}× Ja`);
+  if (maybeCount > 0) parts.push(`${maybeCount}× Vielleicht`);
+  $sendSummary.textContent = `${parts.join(' und ')} — wird an Wexplore Productions gesendet.`;
+
+  openSendModal();
+});
+
+function openSendModal() {
+  $sendModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  // Vorherigen Namen aus localStorage holen, falls vorhanden
+  const savedName = localStorage.getItem('wexplore-casting-sender-name');
+  if (savedName) $sendName.value = savedName;
+  setTimeout(() => $sendName.focus(), 100);
+}
+
+function closeSendModal() {
+  $sendModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+$sendModal.addEventListener('click', (e) => {
+  if (e.target.hasAttribute('data-close-send')) closeSendModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && $sendModal.getAttribute('aria-hidden') === 'false') closeSendModal();
+});
+
+$sendForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = $sendName.value.trim();
+  const comment = $sendComment.value.trim();
+
+  if (!name) {
+    $sendName.focus();
+    return;
+  }
+
+  // Name in localStorage für nächstes Mal
+  localStorage.setItem('wexplore-casting-sender-name', name);
+
+  const text = buildResultText(name, comment).join('\n');
+
+  setSendBtnState('sending');
 
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
@@ -325,26 +370,29 @@ $copyBtn.addEventListener('click', async () => {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
-        subject: 'Casting-Auswahl RE/MAX × Wexplore',
-        from_name: 'Casting-Tool',
+        subject: `Casting-Auswahl RE/MAX × Wexplore — von ${name}`,
+        from_name: name,
         message: text,
-        // honeypot leer lassen
         botcheck: ''
       })
     });
     const data = await res.json();
     if (data.success) {
-      setBtnState('sent');
-      showToast('Auswahl an Wexplore gesendet ✓');
-      // Nach 3s zurück zum Normalzustand
-      setTimeout(() => setBtnState('idle', originalLabel), 3000);
+      setSendBtnState('sent');
+      setTimeout(() => {
+        closeSendModal();
+        setSendBtnState('idle');
+        $sendComment.value = '';
+        showToast('An Wexplore gesendet ✓');
+        // Floating-Button kurz auf "Gesendet"
+        markFloatingSent();
+      }, 800);
     } else {
       throw new Error(data.message || 'Sendung fehlgeschlagen');
     }
   } catch (err) {
     console.warn('Send failed, falling back to copy', err);
-    setBtnState('idle', originalLabel);
-    // Fallback: in Zwischenablage kopieren
+    setSendBtnState('idle');
     try {
       await navigator.clipboard.writeText(text);
       showToast('Senden fehlgeschlagen — in Zwischenablage kopiert');
@@ -358,32 +406,56 @@ $copyBtn.addEventListener('click', async () => {
   }
 });
 
-function setBtnState(mode, originalLabel) {
-  const $label = $copyBtn.querySelector('.floating-btn-label');
-  const $icon  = $copyBtn.querySelector('.floating-btn-icon');
-  $copyBtn.classList.remove('is-sending', 'is-sent');
+function setSendBtnState(mode) {
+  const $label = $sendSubmit.querySelector('.send-btn-label');
+  const $icon  = $sendSubmit.querySelector('.send-btn-icon');
+  $sendSubmit.classList.remove('is-sending', 'is-sent');
   if (mode === 'sending') {
-    $copyBtn.classList.add('is-sending');
-    $copyBtn.disabled = true;
+    $sendSubmit.classList.add('is-sending');
+    $sendSubmit.disabled = true;
     $label.textContent = 'Wird gesendet …';
     $icon.textContent = '';
   } else if (mode === 'sent') {
-    $copyBtn.classList.add('is-sent');
-    $copyBtn.disabled = true;
+    $sendSubmit.classList.add('is-sent');
+    $sendSubmit.disabled = true;
     $label.textContent = 'Gesendet';
     $icon.textContent = '✓';
   } else {
-    $copyBtn.disabled = false;
-    $label.textContent = originalLabel || 'Auswahl an Wexplore senden';
+    $sendSubmit.disabled = false;
+    $label.textContent = 'Absenden';
     $icon.textContent = '→';
   }
 }
 
-function buildResultText() {
+function markFloatingSent() {
+  const $label = $copyBtn.querySelector('.floating-btn-label');
+  const $icon  = $copyBtn.querySelector('.floating-btn-icon');
+  $copyBtn.classList.add('is-sent');
+  $copyBtn.disabled = true;
+  $label.textContent = 'Gesendet';
+  $icon.textContent = '✓';
+  setTimeout(() => {
+    $copyBtn.classList.remove('is-sent');
+    $copyBtn.disabled = false;
+    $label.textContent = 'Auswahl an Wexplore senden';
+    $icon.textContent = '→';
+  }, 3000);
+}
+
+function buildResultText(senderName, senderComment) {
   const lines = [];
   lines.push('CASTING AUSWAHL — RE/MAX × WEXPLORE');
   lines.push('Stand: ' + new Date().toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' }));
+  if (senderName) lines.push('Gesendet von: ' + senderName);
   lines.push('');
+
+  if (senderComment) {
+    lines.push('─────────────────────────────');
+    lines.push('KOMMENTAR');
+    lines.push('─────────────────────────────');
+    lines.push(senderComment);
+    lines.push('');
+  }
 
   const groups = { yes: [], maybe: [] };
   state.models.forEach(m => {
