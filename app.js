@@ -138,7 +138,6 @@ function renderCard(m) {
     <article class="card ${voteClass}" data-id="${escapeAttr(m.id)}">
       <div class="card-image" data-action="open">
         ${imageHtml}
-        ${m.status ? `<span class="card-status-tag ${statusClass}">${escapeHtml(m.status)}</span>` : ''}
         ${getAgencyTagHtml(m.agencyVote)}
       </div>
       <div class="card-body">
