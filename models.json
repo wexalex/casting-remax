@@ -310,5 +310,57 @@
     "availability": "Verfügbar",
     "travel": "Villach → Wien",
     "notes": null
+  },
+  {
+    "id": "julian-sch",
+    "name": "Julian Sch.",
+    "category": "Raver",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "https://www.people2people.co.at/includes/phpthumb/phpThumb.php?src=/userupload/editorupload/files/images/Vorschaubild_kl_neue_Hp/Julian-Sch-HP_V_Bild--1.jpg&h=400&w=360&zc=1",
+    "setcardUrl": "https://www.people2people.co.at/de/model-detail/3/4253/julian-sch.html",
+    "agencyUrl": "https://www.people2people.co.at/de/model-detail/3/4253/julian-sch.html",
+    "location": null,
+    "availability": "Verfügbar (16.06. bestätigt)",
+    "travel": null,
+    "notes": "Neuer Vorschlag - Tätowierte Models für Raver-Kategorie."
+  },
+  {
+    "id": "felix-h",
+    "name": "Felix H.",
+    "category": "Raver",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "https://www.people2people.co.at/includes/phpthumb/phpThumb.php?src=/userupload/editorupload/files/images/Vorschaubild_kl_neue_Hp/2024-04-rawli-clothes-2024-04-Felix-Rawli8965-(1).jpg&h=400&w=360&zc=1",
+    "setcardUrl": "https://www.people2people.co.at/de/model-detail/23/4310/felix-h.html",
+    "agencyUrl": "https://www.people2people.co.at/de/model-detail/23/4310/felix-h.html",
+    "location": null,
+    "availability": "Verfügbar (16.06. bestätigt)",
+    "travel": null,
+    "notes": "Neuer Vorschlag - laut Agentur aktuell mit kürzeren Haaren."
+  },
+  {
+    "id": "david-m",
+    "name": "David M.",
+    "category": "Kids",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "https://www.people2people.co.at/includes/phpthumb/phpThumb.php?src=/userupload/editorupload/files/David_M_1.jpg&h=400&w=360&zc=1",
+    "setcardUrl": "https://www.people2people.co.at/de/model-detail/7/4705/david-m.html",
+    "agencyUrl": "https://www.people2people.co.at/de/model-detail/7/4705/david-m.html",
+    "location": null,
+    "availability": "Verfügbar (16.06. bestätigt)",
+    "travel": null,
+    "notes": "Neuer Vorschlag für Kategorie Kids (Buben)."
+  },
+  {
+    "id": "alain-pi",
+    "name": "Alain Pi.",
+    "category": "Kids",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "https://www.people2people.co.at/includes/phpthumb/phpThumb.php?src=/userupload/editorupload/files/Alain-Pi.-V--Bild-kl_3.jpg&h=400&w=360&zc=1",
+    "setcardUrl": "https://www.people2people.co.at/de/model-detail/7/3921/alain-pi.html",
+    "agencyUrl": "https://www.people2people.co.at/de/model-detail/7/3921/alain-pi.html",
+    "location": null,
+    "availability": "Verfügbar (16.06. bestätigt)",
+    "travel": null,
+    "notes": "Neuer Vorschlag für Kategorie Kids (Buben)."
   }
 ]
