@@ -10,7 +10,8 @@
     "location": "München",
     "availability": "Verfügbar",
     "travel": "München → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "second"
   },
   {
     "id": "sonia-b",
@@ -23,7 +24,8 @@
     "location": "Linz",
     "availability": "Nicht verfügbar",
     "travel": "Linz → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "fav"
   },
   {
     "id": "shari-hab",
@@ -36,7 +38,8 @@
     "location": "Bregenz",
     "availability": "Verfügbar",
     "travel": "Bregenz → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "fav"
   },
   {
     "id": "louis-sch",
@@ -49,7 +52,8 @@
     "location": "Wien",
     "availability": "Nicht verfügbar",
     "travel": "Wien (vor Ort)",
-    "notes": null
+    "notes": null,
+    "agencyVote": "fav"
   },
   {
     "id": "guillermo-rm",
@@ -62,7 +66,8 @@
     "location": "Salzburg",
     "availability": "Offen - keine Rückmeldung",
     "travel": "Salzburg → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "second"
   },
   {
     "id": "anna-marie-h",
@@ -75,7 +80,8 @@
     "location": "Ried i.I.",
     "availability": "Verfügbar (Bestätigung am 18.05. von Mutter)",
     "travel": "Ried im Innkreis → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "fav"
   },
   {
     "id": "alesia-or",
@@ -88,7 +94,8 @@
     "location": "St. Marienkirchen",
     "availability": "Verfügbar",
     "travel": "St. Marienkirchen → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "second"
   },
   {
     "id": "ben-d",
@@ -101,7 +108,8 @@
     "location": "Traun",
     "availability": "Verfügbar",
     "travel": "Traun → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "second"
   },
   {
     "id": "falko-s",
@@ -114,7 +122,8 @@
     "location": "Stuttgart",
     "availability": "Verfügbar",
     "travel": "Flug Stuttgart ↔ Wien nötig (evtl. Hinfahrt Zug + Rückflug; ohne Übernachtung in einem Tag machbar).",
-    "notes": "Kategorie 2 - höhere Preiskategorie."
+    "notes": "Kategorie 2 - höhere Preiskategorie.",
+    "agencyVote": "fav"
   },
   {
     "id": "sascha-j",
@@ -127,7 +136,8 @@
     "location": "Villach",
     "availability": "Verfügbar",
     "travel": "Villach → Wien",
-    "notes": null
+    "notes": null,
+    "agencyVote": "second"
   },
   {
     "id": "julian-sch",
@@ -140,7 +150,8 @@
     "location": null,
     "availability": "Verfügbar (16.06. bestätigt)",
     "travel": null,
-    "notes": "Neuer Vorschlag - Tätowierte Models für Raver-Kategorie."
+    "notes": "Neuer Vorschlag - Tätowierte Models für Raver-Kategorie.",
+    "agencyVote": "neu"
   },
   {
     "id": "felix-h",
@@ -153,7 +164,8 @@
     "location": null,
     "availability": "Verfügbar (16.06. bestätigt)",
     "travel": null,
-    "notes": "Neuer Vorschlag - laut Agentur aktuell mit kürzeren Haaren."
+    "notes": "Neuer Vorschlag - laut Agentur aktuell mit kürzeren Haaren.",
+    "agencyVote": "neu"
   },
   {
     "id": "david-m",
@@ -166,7 +178,8 @@
     "location": null,
     "availability": "Verfügbar (16.06. bestätigt)",
     "travel": null,
-    "notes": "Neuer Vorschlag für Kategorie Kids (Buben)."
+    "notes": "Neuer Vorschlag für Kategorie Kids (Buben).",
+    "agencyVote": "neu"
   },
   {
     "id": "alain-pi",
@@ -179,6 +192,7 @@
     "location": null,
     "availability": "Verfügbar (16.06. bestätigt)",
     "travel": null,
-    "notes": "Neuer Vorschlag für Kategorie Kids (Buben)."
+    "notes": "Neuer Vorschlag für Kategorie Kids (Buben).",
+    "agencyVote": "neu"
   }
 ]

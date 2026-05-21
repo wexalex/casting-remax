@@ -139,6 +139,7 @@ function renderCard(m) {
       <div class="card-image" data-action="open">
         ${imageHtml}
         ${m.status ? `<span class="card-status-tag ${statusClass}">${escapeHtml(m.status)}</span>` : ''}
+        ${getAgencyTagHtml(m.agencyVote)}
       </div>
       <div class="card-body">
         ${m.category ? `<div class="card-category">${escapeHtml(m.category)}</div>` : ''}
@@ -251,7 +252,7 @@ function openModal(id) {
   $modalInner.innerHTML = `
     <div class="modal-hero">${imageHtml}</div>
     <div class="modal-body">
-      ${m.category ? `<div class="modal-cat">${escapeHtml(m.category)} · ${escapeHtml(m.status || '')}</div>` : ''}
+      ${m.category ? `<div class="modal-cat">${escapeHtml(m.category)} · ${escapeHtml(m.status || '')}${m.agencyVote ? ' · ' + agencyVoteLabel(m.agencyVote) : ''}</div>` : ''}
       <h2 class="modal-name" id="modalName">${escapeHtml(m.name || '')}</h2>
       ${m.location ? `<p class="modal-location">${escapeHtml(m.location)}</p>` : ''}
 
@@ -533,6 +534,15 @@ function isTravelWarning(s) {
   if (!s) return false;
   const lower = s.toLowerCase();
   return lower.includes('flug') || lower.includes('achtung') || lower.includes('übernachtung');
+}
+function agencyVoteLabel(vote) {
+  return ({ fav: 'Agentur-Fav', second: 'Second Choice', neu: 'Neu' })[vote] || '';
+}
+function getAgencyTagHtml(vote) {
+  const label = agencyVoteLabel(vote);
+  if (!label) return '';
+  const cls = ({ fav: 'is-fav', second: 'is-second', neu: 'is-neu' })[vote];
+  return `<span class="card-agency-tag ${cls}">${label}</span>`;
 }
 
 /* ---------- FALLBACK DATA (falls models.json nicht lädt) ---------- */

@@ -380,6 +380,20 @@ img { display: block; max-width: 100%; }
 .card-status-tag.is-favorit { background: var(--ink); color: var(--paper); }
 .card-status-tag.is-backup { background: rgba(255,255,255,0.95); color: var(--graphite); }
 
+.card-agency-tag {
+  position: absolute;
+  top: 12px; right: 12px;
+  padding: 5px 10px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.card-agency-tag.is-fav    { background: var(--gold);      color: var(--ink); }
+.card-agency-tag.is-second { background: rgba(255,255,255,0.95); color: var(--gold-deep); box-shadow: inset 0 0 0 1px var(--gold); }
+.card-agency-tag.is-neu    { background: var(--gold-soft); color: var(--ink); }
+
 .card-body {
   padding: 18px 18px 14px;
   display: flex; flex-direction: column;
