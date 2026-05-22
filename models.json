@@ -207,7 +207,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Hair: light brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Hair: light brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/len.jpg",
+      "images/dasdeck/len-2.jpg",
+      "images/dasdeck/len-3.jpg"
+    ]
   },
   {
     "id": "theo",
@@ -221,7 +226,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 113, Hair: brown, Eyes: brown. Mutter Antonella (175 cm) ist mit dabei."
+    "notes": "Vorschlag dasdeck. Height: 113, Hair: brown, Eyes: brown. Mutter Antonella (175 cm) ist mit dabei.",
+    "imageUrls": [
+      "images/dasdeck/theo.jpg",
+      "images/dasdeck/theo-2.jpg",
+      "images/dasdeck/theo-3.jpg"
+    ]
   },
   {
     "id": "oskar",
@@ -235,7 +245,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. 6 Jahre, Hair: blond, Eyes: green."
+    "notes": "Vorschlag dasdeck. 6 Jahre, Hair: blond, Eyes: green.",
+    "imageUrls": [
+      "images/dasdeck/oskar.jpg",
+      "images/dasdeck/oskar-2.jpg",
+      "images/dasdeck/oskar-3.jpg"
+    ]
   },
   {
     "id": "niels",
@@ -249,7 +264,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Hair: brunette, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Hair: brunette, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/niels.jpg",
+      "images/dasdeck/niels-2.jpg",
+      "images/dasdeck/niels-3.jpg"
+    ]
   },
   {
     "id": "xhan",
@@ -263,7 +283,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 155, Hair: dark blonde, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Height: 155, Hair: dark blonde, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/xhan.jpg",
+      "images/dasdeck/xhan-2.jpg",
+      "images/dasdeck/xhan-3.jpg"
+    ]
   },
   {
     "id": "johnny",
@@ -277,7 +302,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 153, Hair: brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Height: 153, Hair: brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/johnny.jpg",
+      "images/dasdeck/johnny-2.jpg",
+      "images/dasdeck/johnny-3.jpg"
+    ]
   },
   {
     "id": "nicolas",
@@ -291,7 +321,12 @@
     "availability": "Verfügbar",
     "travel": "Graz → Wien",
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 137, Hair: brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Height: 137, Hair: brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/nicolas.jpg",
+      "images/dasdeck/nicolas-2.jpg",
+      "images/dasdeck/nicolas-3.jpg"
+    ]
   },
   {
     "id": "loui-magda",
@@ -305,7 +340,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Owner + Hund (Paar)."
+    "notes": "Vorschlag dasdeck. Owner + Hund (Paar).",
+    "imageUrls": [
+      "images/dasdeck/loui-magda.jpg",
+      "images/dasdeck/loui-magda-2.jpg",
+      "images/dasdeck/loui-magda-3.jpg"
+    ]
   },
   {
     "id": "coco-maria",
@@ -319,7 +359,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Owner + Hund (Paar)."
+    "notes": "Vorschlag dasdeck. Owner + Hund (Paar).",
+    "imageUrls": [
+      "images/dasdeck/coco-maria.jpg",
+      "images/dasdeck/coco-maria-2.jpg",
+      "images/dasdeck/coco-maria-3.jpg"
+    ]
   },
   {
     "id": "joe-lolita",
@@ -333,7 +378,15 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Owner + Hund (Paar)."
+    "notes": "Vorschlag dasdeck. Owner + Hund (Paar).",
+    "imageUrls": [
+      "images/dasdeck/joe-lolita.jpg",
+      "images/dasdeck/joe-lolita-2.jpg",
+      "images/dasdeck/joe-lolita-3.jpg",
+      "images/dasdeck/joe-lolita-4.jpg",
+      "images/dasdeck/joe-lolita-5.jpg",
+      "images/dasdeck/joe-lolita-6.jpg"
+    ]
   },
   {
     "id": "karli",
@@ -347,7 +400,12 @@
     "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Französische Bulldogge, 3 Jahre. Solo Hund (Owner nicht im PDF)."
+    "notes": "Vorschlag dasdeck. Französische Bulldogge, 3 Jahre. Solo Hund (Owner nicht im PDF).",
+    "imageUrls": [
+      "images/dasdeck/karli.jpg",
+      "images/dasdeck/karli-2.jpg",
+      "images/dasdeck/karli-3.jpg"
+    ]
   },
   {
     "id": "bernardo",
@@ -361,7 +419,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 178, Hair: brunette, Eyes: green."
+    "notes": "Vorschlag dasdeck. Height: 178, Hair: brunette, Eyes: green.",
+    "imageUrls": [
+      "images/dasdeck/bernardo.jpg",
+      "images/dasdeck/bernardo-2.jpg",
+      "images/dasdeck/bernardo-3.jpg"
+    ]
   },
   {
     "id": "seif",
@@ -375,7 +438,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 183, Hair: brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Height: 183, Hair: brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/seif.jpg",
+      "images/dasdeck/seif-2.jpg",
+      "images/dasdeck/seif-3.jpg"
+    ]
   },
   {
     "id": "maurice",
@@ -389,7 +457,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 190, Measurements: 90-75-100, Hair: brunette, Eyes: blue-green."
+    "notes": "Vorschlag dasdeck. Height: 190, Measurements: 90-75-100, Hair: brunette, Eyes: blue-green.",
+    "imageUrls": [
+      "images/dasdeck/maurice.jpg",
+      "images/dasdeck/maurice-2.jpg",
+      "images/dasdeck/maurice-3.jpg"
+    ]
   },
   {
     "id": "joel",
@@ -403,7 +476,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Hair: brown, Eyes: green-brown."
+    "notes": "Vorschlag dasdeck. Hair: brown, Eyes: green-brown.",
+    "imageUrls": [
+      "images/dasdeck/joel.jpg",
+      "images/dasdeck/joel-2.jpg",
+      "images/dasdeck/joel-3.jpg"
+    ]
   },
   {
     "id": "xaver",
@@ -417,7 +495,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 188, Hair: brunette, Eyes: blue."
+    "notes": "Vorschlag dasdeck. Height: 188, Hair: brunette, Eyes: blue.",
+    "imageUrls": [
+      "images/dasdeck/xaver.jpg",
+      "images/dasdeck/xaver-2.jpg",
+      "images/dasdeck/xaver-3.jpg"
+    ]
   },
   {
     "id": "carlos",
@@ -431,7 +514,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Hair: black, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Hair: black, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/carlos.jpg",
+      "images/dasdeck/carlos-2.jpg",
+      "images/dasdeck/carlos-3.jpg"
+    ]
   },
   {
     "id": "sebastian",
@@ -445,7 +533,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Hair: brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Hair: brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/sebastian.jpg",
+      "images/dasdeck/sebastian-2.jpg",
+      "images/dasdeck/sebastian-3.jpg"
+    ]
   },
   {
     "id": "kailash",
@@ -459,7 +552,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 185, Measurements: 87-76-85, Hair: brown, Eyes: blue."
+    "notes": "Vorschlag dasdeck. Height: 185, Measurements: 87-76-85, Hair: brown, Eyes: blue.",
+    "imageUrls": [
+      "images/dasdeck/kailash.jpg",
+      "images/dasdeck/kailash-2.jpg",
+      "images/dasdeck/kailash-3.jpg"
+    ]
   },
   {
     "id": "karim",
@@ -473,7 +571,12 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 189, Hair: brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Height: 189, Hair: brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/karim.jpg",
+      "images/dasdeck/karim-2.jpg",
+      "images/dasdeck/karim-3.jpg"
+    ]
   },
   {
     "id": "lasse",
@@ -487,20 +590,30 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 188, Measurements: 97-78-88, Hair: blonde, Eyes: blue."
+    "notes": "Vorschlag dasdeck. Height: 188, Measurements: 97-78-88, Hair: blonde, Eyes: blue.",
+    "imageUrls": [
+      "images/dasdeck/lasse.jpg",
+      "images/dasdeck/lasse-2.jpg",
+      "images/dasdeck/lasse-3.jpg"
+    ]
   },
   {
     "id": "fabi-r",
     "name": "Fabi",
     "category": "Raver",
     "status": "Favorit (nachgereicht)",
-    "imageUrl": "images/dasdeck/fabi.jpg",
+    "imageUrl": "images/dasdeck/fabi-r.jpg",
     "setcardUrl": null,
     "agencyUrl": null,
     "location": null,
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 178, Hair: dark brown, Eyes: brown."
+    "notes": "Vorschlag dasdeck. Height: 178, Hair: dark brown, Eyes: brown.",
+    "imageUrls": [
+      "images/dasdeck/fabi-r.jpg",
+      "images/dasdeck/fabi-r-2.jpg",
+      "images/dasdeck/fabi-r-3.jpg"
+    ]
   }
 ]

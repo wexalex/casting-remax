@@ -12,6 +12,7 @@ const state = {
   filter: 'available', // 'all' | 'available' | 'open' | 'yes' | 'maybe' | 'no'
   categoryFilter: 'all',
   search: '',
+  imageIdx: {},        // { id: current image index for carousel }
 };
 
 /* ---------- DOM ---------- */
@@ -129,15 +130,25 @@ function renderCard(m) {
   const travelClass = isTravelWarning(m.travel) ? 'is-warning' : '';
 
   const initials = getInitials(m.name);
-  const imageHtml = m.imageUrl
-    ? `<img src="${escapeAttr(m.imageUrl)}" alt="${escapeAttr(m.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+  const imgs = getImages(m);
+  const idx = clampIdx(state.imageIdx[m.id] || 0, imgs.length);
+  const currentImg = imgs[idx];
+  const imageHtml = currentImg
+    ? `<img class="card-img-current" src="${escapeAttr(currentImg)}" alt="${escapeAttr(m.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
        <div class="card-image-placeholder" style="display:none;">${escapeHtml(initials)}</div>`
     : `<div class="card-image-placeholder">${escapeHtml(initials)}</div>`;
+
+  const carouselHtml = imgs.length > 1 ? `
+    <button class="card-img-nav card-img-prev" data-img-nav="prev" aria-label="Voriges Bild" type="button">‹</button>
+    <button class="card-img-nav card-img-next" data-img-nav="next" aria-label="Nächstes Bild" type="button">›</button>
+    <div class="card-img-counter">${idx + 1}/${imgs.length}</div>
+  ` : '';
 
   return `
     <article class="card ${voteClass}" data-id="${escapeAttr(m.id)}">
       <div class="card-image" data-action="open">
         ${imageHtml}
+        ${carouselHtml}
         ${getAgencyTagHtml(m.agencyVote)}
       </div>
       <div class="card-body">
@@ -189,6 +200,28 @@ function renderCounts() {
 
 /* ---------- INTERACTIONS ---------- */
 $grid.addEventListener('click', (e) => {
+  // image carousel nav?
+  const navBtn = e.target.closest('[data-img-nav]');
+  if (navBtn) {
+    e.stopPropagation();
+    const card = navBtn.closest('.card');
+    const id = card.getAttribute('data-id');
+    const m = state.models.find(x => x.id === id);
+    if (!m) return;
+    const imgs = getImages(m);
+    if (imgs.length <= 1) return;
+    const dir = navBtn.getAttribute('data-img-nav') === 'next' ? 1 : -1;
+    const cur = clampIdx(state.imageIdx[id] || 0, imgs.length);
+    const next = (cur + dir + imgs.length) % imgs.length;
+    state.imageIdx[id] = next;
+    // Only update img + counter, not whole card
+    const img = card.querySelector('.card-img-current');
+    if (img) img.src = imgs[next];
+    const counter = card.querySelector('.card-img-counter');
+    if (counter) counter.textContent = `${next + 1}/${imgs.length}`;
+    return;
+  }
+
   // vote button?
   const voteBtn = e.target.closest('.vote-btn');
   if (voteBtn) {
@@ -242,14 +275,23 @@ function openModal(id) {
   const availClass = getAvailClass(m.availability);
   const travelClass = isTravelWarning(m.travel) ? 'is-warning' : '';
   const initials = getInitials(m.name);
-  const imageHtml = m.imageUrl
-    ? `<img src="${escapeAttr(m.imageUrl)}" alt="${escapeAttr(m.name)}" />`
+  const imgs = getImages(m);
+  const idx = clampIdx(state.imageIdx[id] || 0, imgs.length);
+  const currentImg = imgs[idx];
+  const imageHtml = currentImg
+    ? `<img class="modal-img-current" src="${escapeAttr(currentImg)}" alt="${escapeAttr(m.name)}" />`
     : `<div class="card-image-placeholder">${escapeHtml(initials)}</div>`;
+  const heroNav = imgs.length > 1 ? `
+    <button class="modal-img-nav modal-img-prev" data-modal-nav="prev" aria-label="Voriges Bild" type="button">‹</button>
+    <button class="modal-img-nav modal-img-next" data-modal-nav="next" aria-label="Nächstes Bild" type="button">›</button>
+    <div class="modal-img-counter">${idx + 1}/${imgs.length}</div>
+  ` : '';
 
   const note = state.notes[id] || '';
 
+  $modalInner.setAttribute('data-modal-id', id);
   $modalInner.innerHTML = `
-    <div class="modal-hero">${imageHtml}</div>
+    <div class="modal-hero" data-modal-id="${escapeAttr(id)}">${imageHtml}${heroNav}</div>
     <div class="modal-body">
       ${m.category ? `<div class="modal-cat">${escapeHtml(m.category)} · ${escapeHtml(m.status || '')}${m.agencyVote ? ' · ' + agencyVoteLabel(m.agencyVote) : ''}</div>` : ''}
       <h2 class="modal-name" id="modalName">${escapeHtml(m.name || '')}</h2>
@@ -292,11 +334,45 @@ function closeModal() {
 }
 
 $modal.addEventListener('click', (e) => {
+  // modal image nav?
+  const navBtn = e.target.closest('[data-modal-nav]');
+  if (navBtn) {
+    e.stopPropagation();
+    cycleModalImage(navBtn.getAttribute('data-modal-nav') === 'next' ? 1 : -1);
+    return;
+  }
   if (e.target.hasAttribute('data-close')) closeModal();
 });
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && $modal.getAttribute('aria-hidden') === 'false') closeModal();
+  const modalOpen = $modal.getAttribute('aria-hidden') === 'false';
+  if (!modalOpen) return;
+  if (e.key === 'Escape') { closeModal(); return; }
+  if (e.key === 'ArrowRight') { cycleModalImage(1); return; }
+  if (e.key === 'ArrowLeft')  { cycleModalImage(-1); return; }
 });
+
+function cycleModalImage(dir) {
+  const $hero = $modalInner.querySelector('.modal-hero');
+  if (!$hero) return;
+  const id = $modalInner.getAttribute('data-modal-id');
+  if (!id) return;
+  const m = state.models.find(x => x.id === id);
+  if (!m) return;
+  const imgs = getImages(m);
+  if (imgs.length <= 1) return;
+  const cur = clampIdx(state.imageIdx[id] || 0, imgs.length);
+  const next = (cur + dir + imgs.length) % imgs.length;
+  state.imageIdx[id] = next;
+  const $img = $hero.querySelector('.modal-img-current');
+  if ($img) $img.src = imgs[next];
+  const $counter = $hero.querySelector('.modal-img-counter');
+  if ($counter) $counter.textContent = `${next + 1}/${imgs.length}`;
+  // Auch Card im Grid syncen, falls sichtbar
+  const $cardImg = $grid.querySelector(`.card[data-id="${CSS.escape(id)}"] .card-img-current`);
+  if ($cardImg) $cardImg.src = imgs[next];
+  const $cardCounter = $grid.querySelector(`.card[data-id="${CSS.escape(id)}"] .card-img-counter`);
+  if ($cardCounter) $cardCounter.textContent = `${next + 1}/${imgs.length}`;
+}
 
 /* ---------- SEND RESULTS ---------- */
 const WEB3FORMS_KEY = '1dce030d-d365-4be5-a295-c82daee54fb4';
@@ -536,6 +612,18 @@ function isTravelWarning(s) {
 }
 function agencyVoteLabel(vote) {
   return ({ fav: 'Agentur-Fav', second: 'Second Choice', neu: 'Neu' })[vote] || '';
+}
+function getImages(m) {
+  if (Array.isArray(m.imageUrls) && m.imageUrls.length > 0) return m.imageUrls;
+  if (m.imageUrl) return [m.imageUrl];
+  return [];
+}
+function clampIdx(i, len) {
+  if (!len) return 0;
+  i = i | 0;
+  if (i < 0) return 0;
+  if (i >= len) return len - 1;
+  return i;
 }
 function getAgencyTagHtml(vote) {
   const label = agencyVoteLabel(vote);

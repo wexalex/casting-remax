@@ -394,6 +394,48 @@ img { display: block; max-width: 100%; }
 .card-agency-tag.is-second { background: rgba(255,255,255,0.95); color: var(--gold-deep); box-shadow: inset 0 0 0 1px var(--gold); }
 .card-agency-tag.is-neu    { background: var(--gold-soft); color: var(--ink); }
 
+/* Carousel Pfeile auf der Card */
+.card-img-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; height: 44px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.42);
+  color: var(--paper);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease), background 0.2s var(--ease);
+  display: grid; place-items: center;
+  padding: 0 0 3px;
+  z-index: 2;
+}
+.card-image:hover .card-img-nav,
+.card-img-nav:focus-visible { opacity: 1; }
+.card-img-nav:hover { background: rgba(0, 0, 0, 0.65); }
+.card-img-prev { left: 0; }
+.card-img-next { right: 0; }
+.card-img-counter {
+  position: absolute;
+  bottom: 10px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--paper);
+  padding: 3px 8px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  z-index: 1;
+}
+/* Touch-Geräte: Pfeile immer sichtbar */
+@media (hover: none) {
+  .card-img-nav { opacity: 0.85; }
+}
+
 .card-body {
   padding: 18px 18px 14px;
   display: flex; flex-direction: column;
@@ -631,6 +673,38 @@ img { display: block; max-width: 100%; }
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center top;
+}
+.modal-img-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 60px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--paper);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  display: grid; place-items: center;
+  padding: 0 0 4px;
+  transition: background 0.2s var(--ease);
+  z-index: 2;
+}
+.modal-img-nav:hover { background: rgba(0, 0, 0, 0.75); }
+.modal-img-prev { left: 0; }
+.modal-img-next { right: 0; }
+.modal-img-counter {
+  position: absolute;
+  bottom: 14px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--paper);
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
 .modal-body {
   padding: 32px 36px 36px;
