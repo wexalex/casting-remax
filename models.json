@@ -336,20 +336,6 @@
     "notes": "Vorschlag dasdeck. Owner + Hund (Paar)."
   },
   {
-    "id": "sarah",
-    "name": "Sarah",
-    "category": "Dog Owner",
-    "status": "Favorit (nachgereicht)",
-    "imageUrl": "images/dasdeck/sarah.jpg",
-    "setcardUrl": null,
-    "agencyUrl": null,
-    "location": null,
-    "availability": "Offen - keine Rückmeldung",
-    "travel": null,
-    "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 175, Hair: dark blonde, Eyes: blue. Solo Owner (Hund nicht im PDF)."
-  },
-  {
     "id": "karli",
     "name": "Karli",
     "category": "Dog Owner",
@@ -362,20 +348,6 @@
     "travel": null,
     "agencyVote": "neu",
     "notes": "Vorschlag dasdeck. Französische Bulldogge, 3 Jahre. Solo Hund (Owner nicht im PDF)."
-  },
-  {
-    "id": "fabi",
-    "name": "Fabi",
-    "category": "Dog Owner",
-    "status": "Favorit (nachgereicht)",
-    "imageUrl": "images/dasdeck/fabi.jpg",
-    "setcardUrl": null,
-    "agencyUrl": null,
-    "location": null,
-    "availability": "Offen - keine Rückmeldung",
-    "travel": null,
-    "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 178, Hair: dark brown, Eyes: brown. Solo Owner (Hund nicht im PDF). Auch als Raver vorgeschlagen."
   },
   {
     "id": "bernardo",
@@ -529,6 +501,6 @@
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag dasdeck. Height: 178, Hair: dark brown, Eyes: brown. Auch als Dog Owner vorgeschlagen."
+    "notes": "Vorschlag dasdeck. Height: 178, Hair: dark brown, Eyes: brown."
   }
 ]
