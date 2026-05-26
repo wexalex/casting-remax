@@ -643,5 +643,56 @@
     "travel": null,
     "agencyVote": "neu",
     "notes": "Vorschlag tempomodels. Verfügbarkeit am 26.05. bestätigt."
+  },
+  {
+    "id": "alex-r",
+    "name": "Alex R.",
+    "category": "Raver",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "images/tempomodels/alex-r.jpg",
+    "imageUrls": [
+      "images/tempomodels/alex-r.jpg"
+    ],
+    "setcardUrl": null,
+    "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4372/ee9ead7b/7294/3e648cc0",
+    "location": null,
+    "availability": "Offen - keine Rückmeldung",
+    "travel": null,
+    "agencyVote": "neu",
+    "notes": "Vorschlag tempomodels. Height: 184. Auswahl an Petra gesendet, Verfügbarkeit in Klärung."
+  },
+  {
+    "id": "konstantin-k",
+    "name": "Konstantin K.",
+    "category": "Raver",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "images/tempomodels/konstantin-k.jpg",
+    "imageUrls": [
+      "images/tempomodels/konstantin-k.jpg"
+    ],
+    "setcardUrl": null,
+    "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4372/ee9ead7b/7294/3e648cc0",
+    "location": null,
+    "availability": "Offen - keine Rückmeldung",
+    "travel": null,
+    "agencyVote": "neu",
+    "notes": "Vorschlag tempomodels. Height: 190. Auswahl an Petra gesendet, Verfügbarkeit in Klärung."
+  },
+  {
+    "id": "moritz-r",
+    "name": "Moritz R.",
+    "category": "Raver",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "images/tempomodels/moritz-r.jpg",
+    "imageUrls": [
+      "images/tempomodels/moritz-r.jpg"
+    ],
+    "setcardUrl": null,
+    "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4372/ee9ead7b/7294/3e648cc0",
+    "location": null,
+    "availability": "Offen - keine Rückmeldung",
+    "travel": null,
+    "agencyVote": "neu",
+    "notes": "Vorschlag tempomodels. Height: 195. Auswahl an Petra gesendet, Verfügbarkeit in Klärung."
   }
 ]
