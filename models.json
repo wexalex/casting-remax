@@ -615,5 +615,33 @@
       "images/dasdeck/fabi-r-2.jpg",
       "images/dasdeck/fabi-r-3.jpg"
     ]
+  },
+  {
+    "id": "simon-l",
+    "name": "Simon L.",
+    "category": "Kids",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": null,
+    "setcardUrl": null,
+    "agencyUrl": null,
+    "location": null,
+    "availability": "Verfügbar",
+    "travel": null,
+    "agencyVote": "neu",
+    "notes": "Vorschlag tempomodels. Verfügbarkeit am 26.05. bestätigt."
+  },
+  {
+    "id": "maximilian-l",
+    "name": "Maximilian L.",
+    "category": "Kids",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": null,
+    "setcardUrl": null,
+    "agencyUrl": null,
+    "location": null,
+    "availability": "Verfügbar",
+    "travel": null,
+    "agencyVote": "neu",
+    "notes": "Vorschlag tempomodels. Verfügbarkeit am 26.05. bestätigt."
   }
 ]
