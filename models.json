@@ -109,7 +109,7 @@
     "availability": "Verfügbar",
     "travel": "Traun → Wien",
     "notes": null,
-    "agencyVote": "second"
+    "agencyVote": "fav"
   },
   {
     "id": "falko-s",
@@ -282,7 +282,7 @@
     "location": null,
     "availability": "Verfügbar",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "second",
     "notes": "Vorschlag dasdeck. Height: 155, Hair: dark blonde, Eyes: brown.",
     "imageUrls": [
       "images/dasdeck/xhan.jpg",
@@ -339,7 +339,7 @@
     "location": null,
     "availability": "Verfügbar",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "second",
     "notes": "Vorschlag dasdeck. Owner + Hund (Paar).",
     "imageUrls": [
       "images/dasdeck/loui-magda.jpg",
@@ -358,7 +358,7 @@
     "location": null,
     "availability": "Verfügbar",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "fav",
     "notes": "Vorschlag dasdeck. Owner + Hund (Paar).",
     "imageUrls": [
       "images/dasdeck/coco-maria.jpg",
@@ -418,7 +418,7 @@
     "location": null,
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "second",
     "notes": "Vorschlag dasdeck. Height: 178, Hair: brunette, Eyes: green.",
     "imageUrls": [
       "images/dasdeck/bernardo.jpg",
@@ -437,7 +437,7 @@
     "location": null,
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "fav",
     "notes": "Vorschlag dasdeck. Height: 183, Hair: brown, Eyes: brown.",
     "imageUrls": [
       "images/dasdeck/seif.jpg",
@@ -494,7 +494,7 @@
     "location": null,
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "second",
     "notes": "Vorschlag dasdeck. Height: 188, Hair: brunette, Eyes: blue.",
     "imageUrls": [
       "images/dasdeck/xaver.jpg",
@@ -513,7 +513,7 @@
     "location": null,
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "second",
     "notes": "Vorschlag dasdeck. Hair: black, Eyes: brown.",
     "imageUrls": [
       "images/dasdeck/carlos.jpg",
@@ -608,7 +608,7 @@
     "location": null,
     "availability": "Offen - keine Rückmeldung",
     "travel": null,
-    "agencyVote": "neu",
+    "agencyVote": "second",
     "notes": "Vorschlag dasdeck. Height: 178, Hair: dark brown, Eyes: brown.",
     "imageUrls": [
       "images/dasdeck/fabi-r.jpg",
