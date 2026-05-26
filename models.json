@@ -662,10 +662,10 @@
     "setcardUrl": null,
     "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4372/ee9ead7b/7294/3e648cc0",
     "location": null,
-    "availability": "Offen - keine Rückmeldung",
+    "availability": "Verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag tempomodels. Height: 184. Auswahl an Petra gesendet, Verfügbarkeit in Klärung."
+    "notes": "Vorschlag tempomodels. Height: 184. Am 26.05. als verfügbar bestätigt."
   },
   {
     "id": "konstantin-k",
@@ -679,10 +679,10 @@
     "setcardUrl": null,
     "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4372/ee9ead7b/7294/3e648cc0",
     "location": null,
-    "availability": "Offen - keine Rückmeldung",
+    "availability": "Nicht verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag tempomodels. Height: 190. Auswahl an Petra gesendet, Verfügbarkeit in Klärung."
+    "notes": "Vorschlag tempomodels. Height: 190. Am 26.05. als nicht verfügbar gemeldet."
   },
   {
     "id": "moritz-r",
@@ -696,9 +696,26 @@
     "setcardUrl": null,
     "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4372/ee9ead7b/7294/3e648cc0",
     "location": null,
-    "availability": "Offen - keine Rückmeldung",
+    "availability": "Nicht verfügbar",
     "travel": null,
     "agencyVote": "neu",
-    "notes": "Vorschlag tempomodels. Height: 195. Auswahl an Petra gesendet, Verfügbarkeit in Klärung."
+    "notes": "Vorschlag tempomodels. Height: 195. Am 26.05. als nicht verfügbar gemeldet."
+  },
+  {
+    "id": "david-w",
+    "name": "David W.",
+    "category": "Kids",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": "images/tempomodels/david-w.jpg",
+    "imageUrls": [
+      "images/tempomodels/david-w.jpg"
+    ],
+    "setcardUrl": null,
+    "agencyUrl": "https://tempomodels.mediaslide.com/package/view/4371/1bc0ea20/7293/3e648cc0",
+    "location": null,
+    "availability": "Verfügbar",
+    "travel": null,
+    "agencyVote": "neu",
+    "notes": "Vorschlag tempomodels. Am 26.05. als verfügbar bestätigt."
   }
 ]
