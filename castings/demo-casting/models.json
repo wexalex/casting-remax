@@ -1,0 +1,44 @@
+[
+  {
+    "id": "anna-demo",
+    "name": "Anna D.",
+    "category": "Demo-Kategorie A",
+    "status": "Favorit",
+    "imageUrl": null,
+    "setcardUrl": null,
+    "agencyUrl": null,
+    "location": "Wien",
+    "availability": "Verfügbar",
+    "travel": "Wien (vor Ort)",
+    "agencyVote": "fav",
+    "notes": "Demo-Model. Hier könnten weitere Hinweise der Agentur stehen."
+  },
+  {
+    "id": "ben-demo",
+    "name": "Ben D.",
+    "category": "Demo-Kategorie A",
+    "status": "Backup",
+    "imageUrl": null,
+    "setcardUrl": null,
+    "agencyUrl": null,
+    "location": "Linz",
+    "availability": "Verfügbar",
+    "travel": "Linz → Wien",
+    "agencyVote": "second",
+    "notes": "Demo-Model als Backup-Option."
+  },
+  {
+    "id": "carla-demo",
+    "name": "Carla D.",
+    "category": "Demo-Kategorie B",
+    "status": "Favorit (nachgereicht)",
+    "imageUrl": null,
+    "setcardUrl": null,
+    "agencyUrl": null,
+    "location": "Salzburg",
+    "availability": "Offen - keine Rückmeldung",
+    "travel": "Salzburg → Wien",
+    "agencyVote": "neu",
+    "notes": "Demo-Model in anderer Kategorie."
+  }
+]

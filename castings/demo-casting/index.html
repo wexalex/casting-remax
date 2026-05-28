@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<meta name="googlebot" content="noindex, nofollow" />
+<title>Casting Auswahl - Demo × Wexplore</title>
+<meta name="description" content="Demo-Casting der Wexplore Casting-Plattform." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/styles.css" />
+</head>
+<body>
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="gate" id="gate" aria-hidden="false">
+  <div class="gate-inner">
+    <img src="../../assets/logos/wexplore-logo.png" alt="Wexplore" class="gate-logo" />
+    <p class="gate-kicker">Geschützter Bereich</p>
+    <h1 class="gate-title">Casting Auswahl<br/><span class="gate-title-accent">Demo</span></h1>
+    <p class="gate-lede">Bitte das Zugangswort eingeben, um die Kandidat:innen zu sehen.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input
+        type="password"
+        id="gateInput"
+        class="gate-input"
+        placeholder="Zugangswort"
+        autofocus
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <button type="submit" class="gate-btn">Eintreten →</button>
+      <p class="gate-error" id="gateError" hidden>Falsches Zugangswort.</p>
+    </form>
+    <p class="gate-foot">Wexplore Productions GmbH</p>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a class="brand" href="./" aria-label="Wexplore Productions">
+        <img src="../../assets/logos/wexplore-logo.png" alt="Wexplore" class="brand-logo brand-logo-wexplore" />
+      </a>
+    </div>
+    <nav class="header-meta">
+      <span class="meta-label">Projekt</span>
+      <span class="meta-value">Demo Casting</span>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Casting Auswahl · Demo</p>
+    <h1 class="hero-title">
+      <span class="line">Kandidat:innen</span>
+      <span class="line accent">für eure Auswahl.</span>
+    </h1>
+    <p class="hero-lede">
+      Demo-Casting der <strong>Wexplore Casting-Plattform</strong>. Zeigt die neue Multi-Casting-Struktur mit drei Beispiel-Models.
+    </p>
+    <div class="how-it-works">
+      <p class="how-title">So funktioniert's</p>
+      <p class="how-text">
+        Markiert jede Person mit <strong>Ja</strong>, <strong>Vielleicht</strong> oder <strong>Nein</strong> - eure Auswahl wird automatisch im Browser gespeichert.
+        Über das Bild kommt ihr in die Detailansicht inkl. Setcard.
+        Wenn ihr fertig seid, klickt unten rechts auf <strong>"Auswahl an Wexplore senden"</strong> - wir bekommen eure Markierungen samt Kommentar direkt per Mail.
+      </p>
+    </div>
+    <p class="hero-note">
+      Standardmäßig werden nur <strong>bestätigt verfügbare</strong> Models angezeigt.
+      Über die Filter unten könnt ihr auf <strong>Alle</strong> wechseln, um auch noch offene Anfragen zu sehen.
+    </p>
+    <div class="hero-counts" id="counts">
+      <div class="count-pill"><span class="count-num" data-count="total">0</span><span class="count-label">Total</span></div>
+      <div class="count-pill is-yes"><span class="count-num" data-count="yes">0</span><span class="count-label">Ja</span></div>
+      <div class="count-pill is-maybe"><span class="count-num" data-count="maybe">0</span><span class="count-label">Vielleicht</span></div>
+      <div class="count-pill is-no"><span class="count-num" data-count="no">0</span><span class="count-label">Nein</span></div>
+      <div class="count-pill is-open"><span class="count-num" data-count="open">0</span><span class="count-label">Offen</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTROLS ============ -->
+<section class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <input type="search" id="search" placeholder="Name, Ort, Verfügbarkeit suchen …" autocomplete="off" />
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter is-active" data-filter="available">Verfügbar</button>
+      <button class="filter" data-filter="all">Alle</button>
+      <button class="filter" data-filter="open">Offen</button>
+      <button class="filter" data-filter="yes">Ja</button>
+      <button class="filter" data-filter="maybe">Vielleicht</button>
+      <button class="filter" data-filter="no">Nein</button>
+    </div>
+    <div class="category-filters" id="categoryFilters">
+      <!-- gets populated -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ GRID ============ -->
+<main class="grid-wrap">
+  <div class="grid" id="grid"></div>
+  <div class="empty-state" id="emptyState" hidden>
+    <p>Keine Kandidat:innen für diese Auswahl.</p>
+  </div>
+</main>
+
+<!-- ============ FLOATING ACTION ============ -->
+<div class="floating-actions">
+  <button id="copyResults" class="floating-btn">
+    <span class="floating-btn-label">Auswahl an Wexplore senden</span>
+    <span class="floating-btn-icon">→</span>
+  </button>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <button class="modal-close" data-close aria-label="Schließen">×</button>
+    <div class="modal-inner" id="modalInner"></div>
+  </div>
+</div>
+
+<!-- ============ SEND MODAL ============ -->
+<div class="modal send-modal" id="sendModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-send></div>
+  <div class="modal-panel send-modal-panel" role="dialog" aria-modal="true" aria-labelledby="sendModalTitle">
+    <button class="modal-close" data-close-send aria-label="Schließen">×</button>
+    <div class="send-modal-body">
+      <p class="modal-cat">Auswahl senden</p>
+      <h2 class="modal-name" id="sendModalTitle">Bereit für Wexplore?</h2>
+      <p class="send-modal-lede" id="sendSummary">Eure Auswahl wird per Mail an die Filmproduktion gesendet.</p>
+
+      <form class="send-form" id="sendForm" autocomplete="off">
+        <label class="send-label" for="sendName">Dein Name <span class="send-required">*</span></label>
+        <input
+          type="text"
+          id="sendName"
+          class="send-input"
+          placeholder="z.B. Felix"
+          required
+          autocomplete="name"
+        />
+
+        <label class="send-label" for="sendComment">Kommentar <span class="send-optional">(optional)</span></label>
+        <textarea
+          id="sendComment"
+          class="send-input send-textarea"
+          placeholder="z.B. Anna wäre unsere klare Erstwahl, falls verfügbar."
+          rows="4"
+        ></textarea>
+
+        <div class="send-actions">
+          <button type="button" class="send-btn-secondary" data-close-send>Abbrechen</button>
+          <button type="submit" class="send-btn-primary" id="sendSubmit">
+            <span class="send-btn-label">Absenden</span>
+            <span class="send-btn-icon">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>Wexplore Productions GmbH · Klammstraße 3/Top 1, 4020 Linz</span>
+    <span class="footer-meta">Casting-Auswahl-Tool · Daten lokal im Browser</span>
+  </div>
+</footer>
+
+<script>
+  // ============ PASSWORD GATE ============
+  // Casting-spezifisches Passwort. Kein echter Schutz - Quelltext lesbar.
+  (function() {
+    const PASSWORD = 'demo';
+    const GATE_KEY = 'wexplore-casting-gate-demo-casting';
+    const $gate = document.getElementById('gate');
+    const $form = document.getElementById('gateForm');
+    const $input = document.getElementById('gateInput');
+    const $error = document.getElementById('gateError');
+
+    function unlockGate() {
+      $gate.classList.add('gate-hidden');
+      $gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gate-locked');
+      document.body.classList.add('gate-passed');
+      setTimeout(function() {
+        if ($gate && $gate.parentNode) {
+          $gate.parentNode.removeChild($gate);
+        }
+      }, 300);
+    }
+
+    if (sessionStorage.getItem(GATE_KEY) === '1') {
+      $gate.classList.add('gate-hidden');
+      $gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.add('gate-passed');
+      if ($gate && $gate.parentNode) {
+        $gate.parentNode.removeChild($gate);
+      }
+      return;
+    }
+
+    document.body.classList.add('gate-locked');
+
+    $form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = ($input.value || '').trim().toLowerCase();
+      if (value === PASSWORD) {
+        sessionStorage.setItem(GATE_KEY, '1');
+        unlockGate();
+      } else {
+        $error.hidden = false;
+        $input.value = '';
+        $input.focus();
+        $input.classList.add('gate-shake');
+        setTimeout(function() { $input.classList.remove('gate-shake'); }, 400);
+      }
+    });
+  })();
+</script>
+<script src="../../assets/app.js"></script>
+</body>
+</html>

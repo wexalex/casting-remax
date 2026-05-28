@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<title>Wexplore Castings · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css" />
+<style>
+  /* Admin-spezifische ergänzende Styles */
+  .admin-shell { max-width: 1200px; margin: 0 auto; padding: 80px 32px 120px; }
+  .admin-kicker { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 8px; }
+  .admin-title { font-size: 48px; letter-spacing: -0.03em; font-weight: 500; margin: 0 0 32px; color: var(--ink); }
+  .admin-subtitle { font-size: 18px; color: var(--graphite); margin: 0 0 48px; line-height: 1.5; }
+  .casting-list { display: grid; gap: 16px; }
+  .casting-row {
+    background: var(--paper-warm);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+  .casting-row:hover { background: var(--paper); transform: translateY(-1px); }
+  .casting-name { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .casting-meta { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); }
+  .casting-stats { display: flex; gap: 24px; font-size: 13px; color: var(--graphite); }
+  .casting-stat { display: flex; flex-direction: column; align-items: flex-end; }
+  .casting-stat-num { font-size: 22px; font-weight: 500; color: var(--ink); }
+  .casting-stat-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); margin-top: 2px; }
+  .admin-actions { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .admin-btn {
+    background: var(--ink); color: var(--paper);
+    padding: 14px 24px;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    border: 0; cursor: pointer;
+    transition: background 0.2s var(--ease);
+  }
+  .admin-btn:hover { background: var(--ink-soft); }
+  .admin-btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .admin-btn-secondary:hover { background: var(--ink); color: var(--paper); }
+  .admin-status { display: inline-block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 8px; background: var(--gold-soft); color: var(--ink); margin-left: 8px; }
+  .admin-empty { padding: 60px; text-align: center; color: var(--smoke); background: var(--paper-warm); }
+  .admin-error { background: rgba(138, 58, 58, 0.08); border-left: 3px solid var(--no); padding: 16px 24px; margin: 24px 0; color: var(--no); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!-- ============ ADMIN GATE ============ -->
+<div class="gate" id="gate" aria-hidden="false">
+  <div class="gate-inner">
+    <img src="../assets/logos/wexplore-logo.png" alt="Wexplore" class="gate-logo" />
+    <p class="gate-kicker">Admin-Bereich</p>
+    <h1 class="gate-title">Casting<br/><span class="gate-title-accent">Plattform</span></h1>
+    <p class="gate-lede">Bitte das Admin-Passwort eingeben.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <input
+        type="password"
+        id="gateInput"
+        class="gate-input"
+        placeholder="Admin-Passwort"
+        autofocus
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <button type="submit" class="gate-btn">Anmelden →</button>
+      <p class="gate-error" id="gateError" hidden>Falsches Passwort.</p>
+    </form>
+    <p class="gate-foot">Wexplore Productions GmbH</p>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a class="brand" href="./" aria-label="Wexplore Castings Admin">
+        <img src="../assets/logos/wexplore-logo.png" alt="Wexplore" class="brand-logo brand-logo-wexplore" />
+      </a>
+    </div>
+    <nav class="header-meta">
+      <span class="meta-label">Admin</span>
+      <span class="meta-value">Casting-Plattform</span>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ MAIN ============ -->
+<main class="admin-shell">
+  <p class="admin-kicker">Dashboard</p>
+  <h1 class="admin-title">Castings im Überblick</h1>
+  <p class="admin-subtitle">
+    Hier siehst du alle aktiven Castings. Klick auf ein Casting öffnet die Kunden-Ansicht; für Änderungen verwende den Editor (folgt) oder schick die Anpassungen direkt an Claude Code.
+  </p>
+
+  <div id="castingError" class="admin-error" hidden></div>
+  <div id="castingList" class="casting-list">
+    <div class="admin-empty">Lade Castings …</div>
+  </div>
+
+  <div class="admin-actions">
+    <button class="admin-btn" id="newCastingBtn" disabled title="Folgt in Kürze">+ Neues Casting</button>
+    <button class="admin-btn admin-btn-secondary" id="refreshBtn">Aktualisieren</button>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>Wexplore Productions GmbH · Admin</span>
+    <span class="footer-meta">Plattform v0.1</span>
+  </div>
+</footer>
+
+<script>
+  // ============ ADMIN GATE ============
+  (function() {
+    const PASSWORD = 'wexplore-admin';
+    const GATE_KEY = 'wexplore-admin-gate-ok';
+    const $gate = document.getElementById('gate');
+    const $form = document.getElementById('gateForm');
+    const $input = document.getElementById('gateInput');
+    const $error = document.getElementById('gateError');
+
+    function unlockGate() {
+      $gate.classList.add('gate-hidden');
+      $gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('gate-locked');
+      document.body.classList.add('gate-passed');
+      setTimeout(function() {
+        if ($gate && $gate.parentNode) $gate.parentNode.removeChild($gate);
+        initDashboard();
+      }, 300);
+    }
+
+    if (sessionStorage.getItem(GATE_KEY) === '1') {
+      $gate.classList.add('gate-hidden');
+      $gate.setAttribute('aria-hidden', 'true');
+      document.body.classList.add('gate-passed');
+      if ($gate && $gate.parentNode) $gate.parentNode.removeChild($gate);
+      initDashboard();
+      return;
+    }
+
+    document.body.classList.add('gate-locked');
+
+    $form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = ($input.value || '').trim().toLowerCase();
+      if (value === PASSWORD) {
+        sessionStorage.setItem(GATE_KEY, '1');
+        unlockGate();
+      } else {
+        $error.hidden = false;
+        $input.value = '';
+        $input.focus();
+        $input.classList.add('gate-shake');
+        setTimeout(function() { $input.classList.remove('gate-shake'); }, 400);
+      }
+    });
+  })();
+
+  // ============ DASHBOARD ============
+  async function initDashboard() {
+    await renderCastings();
+    document.getElementById('refreshBtn').addEventListener('click', renderCastings);
+  }
+
+  async function renderCastings() {
+    const $list = document.getElementById('castingList');
+    const $err  = document.getElementById('castingError');
+    $err.hidden = true;
+    $list.innerHTML = '<div class="admin-empty">Lade Castings …</div>';
+
+    let castings;
+    try {
+      const res = await fetch('../castings/_index.json');
+      if (!res.ok) throw new Error('_index.json HTTP ' + res.status);
+      castings = await res.json();
+    } catch (e) {
+      $err.textContent = 'Konnte Casting-Liste nicht laden: ' + e.message;
+      $err.hidden = false;
+      $list.innerHTML = '';
+      return;
+    }
+
+    if (!castings.length) {
+      $list.innerHTML = '<div class="admin-empty">Noch keine Castings angelegt.</div>';
+      return;
+    }
+
+    // Pro Casting Stats berechnen aus models.json
+    const enriched = await Promise.all(castings.map(async c => {
+      try {
+        const r = await fetch(`../castings/${c.slug}/models.json`);
+        if (!r.ok) throw new Error();
+        const models = await r.json();
+        const total = models.length;
+        const available = models.filter(m => (m.availability || '').toLowerCase().startsWith('verfügbar')).length;
+        const open = models.filter(m => /offen|rückmeldung/i.test(m.availability || '')).length;
+        const unavailable = models.filter(m => /^nicht verf/i.test(m.availability || '')).length;
+        return { ...c, total, available, open, unavailable };
+      } catch (e) {
+        return { ...c, total: '?', available: '?', open: '?', unavailable: '?' };
+      }
+    }));
+
+    $list.innerHTML = enriched.map(c => `
+      <a class="casting-row" href="../castings/${c.slug}/">
+        <div>
+          <h2 class="casting-name">${escape(c.name)} ${c.status === 'active' ? '<span class="admin-status">aktiv</span>' : ''}</h2>
+          <p class="casting-meta">${escape(c.client || '-')} × ${escape(c.agency || '-')} · seit ${escape(c.createdAt || '?')}</p>
+        </div>
+        <div class="casting-stats">
+          <div class="casting-stat"><span class="casting-stat-num">${c.total}</span><span class="casting-stat-lbl">Total</span></div>
+          <div class="casting-stat"><span class="casting-stat-num">${c.available}</span><span class="casting-stat-lbl">Verfügbar</span></div>
+          <div class="casting-stat"><span class="casting-stat-num">${c.open}</span><span class="casting-stat-lbl">Offen</span></div>
+          <div class="casting-stat"><span class="casting-stat-num">${c.unavailable}</span><span class="casting-stat-lbl">Nicht verf.</span></div>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function escape(s) {
+    if (s == null) return '';
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+</script>
+</body>
+</html>

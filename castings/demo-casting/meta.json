@@ -1,0 +1,12 @@
+{
+  "slug": "demo-casting",
+  "name": "Demo Casting",
+  "client": "Demo Client",
+  "agency": "Demo Agency",
+  "storageKey": "wexplore-casting-demo-casting-v1",
+  "web3formsKey": null,
+  "mailSubject": "Casting-Auswahl Demo",
+  "mailTitleLine": "CASTING AUSWAHL - DEMO",
+  "status": "active",
+  "createdAt": "2026-05-28"
+}

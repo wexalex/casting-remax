@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "demo-casting",
+    "name": "Demo Casting",
+    "client": "Demo Client",
+    "agency": "Demo Agency",
+    "status": "active",
+    "createdAt": "2026-05-28"
+  }
+]
